@@ -1,0 +1,40 @@
+<form #signup="ngForm" method="post" action="#" (ngSubmit)="dodajKorisnika(signup)">
+
+  <label for="password" class="cols-sm-2 control-label">Korisnicko ime</label>
+  <div class="form-group">
+    <div class="col-sm-3">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-users fa-lg" aria-hidden="true"></i>
+        </span>
+        <input required [(ngModel)]="data.username" #username="ngModel" username.value='' type="text" class="form-control" name="username"
+          placeholder="Unesite korisnicko ime" />
+      </div>
+    </div>
+  </div>
+
+
+  <label for="confirm" class="cols-sm-2 control-label">Unesite lozinku</label>
+  <div class="form-group">
+    <div class="col-sm-3">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+        </span>
+        <input required [(ngModel)]="data.password" #password="ngModel" password.value='' type="password" class="form-control" name="password"
+          placeholder="Unesite lozinku" />
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group ">
+    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Registruj</button>
+  </div>
+
+</form>
+
+<h2>Korisnicki podaci</h2>
+
+<div *ngFor="let item of userData">
+  <p>{{item.username}} {{item.password}}</p>
+</div>

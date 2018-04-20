@@ -1,0 +1,16 @@
+body {
+    height: 100vh;
+    background: url('../../../assets/images/login_background4.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.signup-form {
+    margin: auto;
+    margin-top: 5%; 
+}
+
+input {
+    margin-left: 5%;
+} 

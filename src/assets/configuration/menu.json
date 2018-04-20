@@ -1,0 +1,36 @@
+{
+    "menu": [
+        {
+            "title": "Pocetna",
+            "href": "home"
+        },
+        {
+            "title": "Kartoni pacijenata",
+            "href": "cards"
+        },
+        {
+            "title": "Zakazivanje pregleda",
+            "href": "#skills"
+        },
+        {
+            "title": "Pregledi i izvestaji",
+            "href": "#"
+        },
+        {
+            "title": "Obavestenja",
+            "href": "#"
+        },
+        {
+            "title": "Mail",
+            "href": "#"
+        },
+        {
+            "title": "Ambulantni dnevnih",
+            "href": "#"
+        },
+        {
+            "title": "Kalendar",
+            "href": "calendar"
+        }
+    ]
+}
