@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule, routingComponents } from './component/app-routing/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'angular2-modal';
 
 // service
 import { AppService } from './app.service';
@@ -14,15 +15,20 @@ import { DashboardService } from './service/dashboard/dashboard.service';
 import { SignupService } from './service/signup/signup.service';
 import { ShowUsersService } from './service/show-users/show-users.service';
 
+// guard
+import { LoggedGuard } from './service/login-guard/loggedGuard';
+import { LoginGuard } from './service/login-guard/loginGuard';
+import { DashboardGuard } from './service/login-guard/dashboardGuard';
+
 // component
 import { AppComponent } from './app.component';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { GetdataComponent } from './component/getdata/getdata.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { CalendarComponent } from './component/dashboard/calendar/calendar.component';
-import { HomeDashboardComponent } from './component/dashboard/home-dashboard/home-dashboard.component';
-import { CardsComponent } from './component/dashboard/cards/cards.component';
+import { CalendarComponent } from './component/dashboard/user/calendar/calendar.component';
+import { HomeDashboardComponent } from './component/dashboard/user/home-dashboard/home-dashboard.component';
+import { CardsComponent } from './component/dashboard/user/cards/cards.component';
 import { SignupComponent } from './component/signup/signup.component';
 import { AdminComponent } from './component/dashboard/admin/admin.component';
 import { ShowUsersComponent } from './component/dashboard/admin/show-users/show-users.component';
@@ -30,6 +36,7 @@ import { ShowUsersComponent } from './component/dashboard/admin/show-users/show-
 // kendo module
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { UserComponent } from './component/dashboard/user/user.component';
 
 @NgModule({
   declarations: [
@@ -44,12 +51,14 @@ import { GridModule } from '@progress/kendo-angular-grid';
     CardsComponent,
     SignupComponent,
     AdminComponent,
-    ShowUsersComponent
+    ShowUsersComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     AppRoutingModule,
+    ModalModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -63,7 +72,10 @@ import { GridModule } from '@progress/kendo-angular-grid';
     HomeService,
     DashboardService,
     SignupService,
-    ShowUsersService
+    ShowUsersService,
+    LoggedGuard,
+    DashboardGuard,
+    LoginGuard
   ],
   bootstrap: [AppComponent]
 })

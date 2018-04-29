@@ -1,12 +1,16 @@
-<kendo-grid [data]="usersData" [height]="410">
-  <kendo-grid-column field="id" title="ID" width="40"></kendo-grid-column>
-  <kendo-grid-column field="email" title="Email" width="120"></kendo-grid-column>
-  <kendo-grid-column field="username" title="Username" width="120"></kendo-grid-column>
-  <kendo-grid-column field="password" title="Password" width="250"></kendo-grid-column>
-  <kendo-grid-column field="Opcije" title="Opcije" width="120">
-    <ng-template kendoGridCellTemplate let-dataItem>
-      <button *ngIf="dataItem.active == 0" (click)="activateUser(dataItem.id)">Aktiviraj</button>
-      <button *ngIf="dataItem.active == 1" (click)="deactivateUser(dataItem.id)">Deaktiviraj</button>
-    </ng-template>
-  </kendo-grid-column>
-</kendo-grid>
+<div>
+  <div class="container-fluid">
+    <kendo-grid [data]="usersData" [height]="410">
+      <kendo-grid-column field="id" title="ID" width="40"></kendo-grid-column>
+      <kendo-grid-column field="email" title="Email" width="120"></kendo-grid-column>
+      <kendo-grid-column field="username" title="Username" width="120"></kendo-grid-column>
+      <kendo-grid-column field="password" title="Password" width="250"></kendo-grid-column>
+      <kendo-grid-column field="Opcije" title="Opcije" width="120">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <button *ngIf="dataItem.active == 0" (click)="activateUser(dataItem.id)">Aktiviraj</button>
+          <button *ngIf="dataItem.active == 1" (click)="deactivateUser(dataItem.id)">Deaktiviraj</button>
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid>
+  </div>
+</div>

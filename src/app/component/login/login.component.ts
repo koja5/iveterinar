@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         console.log(user);
         this.cookie.set('user', user);
         if (user === '1') {
-          thisObject.router.navigate(['admin']);
+          thisObject.router.navigate(['/dashboard', {outlets: {'dash': ['admin']}}]);
         } else {
           thisObject.router.navigate(['dashboard']);
         }

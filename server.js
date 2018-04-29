@@ -3,10 +3,13 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
-
-
+//const nodemailer = require('nodemailer');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const morgan = require('morgan');
 // Get our API routes
 const api = require('./server/routes/api');
+const accessControl = require('./server/routes/accessControl')
 
 const app = express();
 
@@ -14,11 +17,17 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(cookieParser());
+app.use(session({secret:"iveterinar", resave:false, saveUninitialized:true, cookie: {maxAge: 1000*300*30}}));
+// loguje svaki zahtev u konzolurs
+app.use(morgan('dev'));
+
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
 app.use('/api', api);
+app.use('/', accessControl);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
