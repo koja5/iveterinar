@@ -16,6 +16,8 @@ import { SignupComponent } from '../signup/signup.component';
 import { AdminComponent} from '../dashboard/admin/admin.component';
 import { ShowUsersComponent } from '../dashboard/admin/show-users/show-users.component';
 import { UserComponent } from '../dashboard/user/user.component';
+import { AddPetComponent } from '../add-pet/add-pet.component';
+
 // guard
 import { LoginGuard } from '../../service/login-guard/loginGuard';
 import { LoggedGuard } from '../../service/login-guard/loggedGuard';
@@ -36,6 +38,7 @@ export const routes: Routes = [
           { path: 'home', component: HomeDashboardComponent, outlet: 'home' },
           { path: 'cards', component: CardsComponent, outlet: 'home'},
           { path: 'calendar', component: CalendarComponent, outlet: 'home' }
+           { path: 'addPet', component: AddPetComponent, outlet: 'home' }
       ]},
       { path: 'admin', component: AdminComponent, outlet: 'dash',
         children: [

@@ -38,6 +38,7 @@ import { ShowUsersComponent } from './component/dashboard/admin/show-users/show-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { UserComponent } from './component/dashboard/user/user.component';
+import { AddPetComponent } from './component/add-pet/add-pet.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { UserComponent } from './component/dashboard/user/user.component';
     SignupComponent,
     AdminComponent,
     ShowUsersComponent,
-    UserComponent
+    UserComponent,
+    AddPetComponent
   ],
   imports: [
     BrowserModule,
