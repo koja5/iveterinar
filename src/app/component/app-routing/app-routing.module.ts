@@ -41,7 +41,8 @@ export const routes: Routes = [
         children: [
           { path: 'show', component: ShowUsersComponent, outlet: 'admin' }
         ], canActivate: [LoginGuard, DashboardGuard]
-      }
+      },
+      { path: 'show', component: ShowUsersComponent, outlet: 'admin' }
     ]
   }
 

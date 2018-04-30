@@ -1,0 +1,8 @@
+{
+    "menu": [
+        {
+            "title": "Prikazi klijente",
+            "href": "show"
+        }
+    ]
+}
