@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowUsersService } from '../../../../service/show-users/show-users.service';
-import { process, State } from '@progress/kendo-data-query';
+import { process, State, CompositeFilterDescriptor, filterBy, GroupDescriptor } from '@progress/kendo-data-query';
 import { GridComponent, GridDataResult, DataStateChangeEvent } from '@progress/kendo-angular-grid';
-
-const distinct = data => data
-  .map(x => x.Category)
-  .filter((x, idx, xs) => xs.findIndex(y => y.CategoryName === x.CategoryName) === idx);
 
 @Component({
   selector: 'app-show-users',
@@ -14,19 +10,14 @@ const distinct = data => data
 })
 export class ShowUsersComponent implements OnInit {
 
-  private usersData: any[];
-
+  private usersData: any;
+  public currentLoadedData: any;
   public distinctCategories: any[];
-
+  public filter: CompositeFilterDescriptor;
+  public groups: GroupDescriptor[] = [];
   public state: State = {
     skip: 0,
     take: 5,
-
-    // Initial filter descriptor
-    filter: {
-      logic: 'and',
-      filters: [{ field: 'ProductName', operator: 'contains', value: 'Chef' }]
-    }
 };
 
   constructor(private service: ShowUsersService) { }
@@ -34,8 +25,9 @@ export class ShowUsersComponent implements OnInit {
   ngOnInit() {
     this.service.getUsers().subscribe(
       data => {
-        this.distinctCategories = distinct(data);
-        this.usersData = data;
+        this.currentLoadedData = data;
+        this.usersData = process(this.currentLoadedData, {group: this.groups});
+        this.usersData.total = 10;
       });
   }
 
@@ -65,4 +57,11 @@ export class ShowUsersComponent implements OnInit {
       () => console.log('Completed!'));
   }
 
+  public filterChange(filter: CompositeFilterDescriptor): void {
+    this.filter = filter;
+    const resultSort = filterBy(this.currentLoadedData, filter);
+    this.usersData = process(resultSort, {group: this.groups});
+    this.usersData.total = 10;
+    console.log(this.usersData);
+  }
 }

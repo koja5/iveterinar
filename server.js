@@ -5,11 +5,13 @@ const http = require('http');
 const bodyParser = require('body-parser');
 //const nodemailer = require('nodemailer');
 const cookieParser = require('cookie-parser');
+const nodemailer = require('nodemailer');
 const session = require('express-session');
 const morgan = require('morgan');
 // Get our API routes
 const api = require('./server/routes/api');
 const accessControl = require('./server/routes/accessControl')
+const mail = require('./server/routes/mailAPI');
 
 const app = express();
 
@@ -27,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
 app.use('/api', api);
+app.use('/api', mail);
 app.use('/', accessControl);
 
 // Catch all other routes and return the index file

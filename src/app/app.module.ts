@@ -14,6 +14,7 @@ import { HomeService } from './service/home/home.service';
 import { DashboardService } from './service/dashboard/dashboard.service';
 import { SignupService } from './service/signup/signup.service';
 import { ShowUsersService } from './service/show-users/show-users.service';
+import { MailService } from './service/mail/mail.service';
 
 // guard
 import { LoggedGuard } from './service/login-guard/loggedGuard';
@@ -75,7 +76,8 @@ import { UserComponent } from './component/dashboard/user/user.component';
     ShowUsersService,
     LoggedGuard,
     DashboardGuard,
-    LoginGuard
+    LoginGuard,
+    MailService
   ],
   bootstrap: [AppComponent]
 })

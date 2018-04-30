@@ -8,7 +8,8 @@
       [filter]="state.filter"
       [sortable]="true"
       [pageable]="true"
-      (dataStateChange)="dataStateChange($event)"
+      [filterable]="true"
+      (filterChange)="filterChange($event)"
     >
       <kendo-grid-column field="id" title="ID" width="40"></kendo-grid-column>
       <kendo-grid-column field="email" title="Email" width="120"></kendo-grid-column>
