@@ -118,7 +118,7 @@ router.post('/login', (req, res, next) => {
                             return next(err);
                         }
                         console.log(rows);
-                        if (rows.length >= 1) {
+                        if (rows.length >= 1 && rows[0].active == 1) {
                             console.log('usao sam ovdee u if');
                             //req.session.user = rows[0];
                             //req.session.auth = true;
@@ -232,6 +232,42 @@ router.get('/deactiveUser/:id', function (req, res, next) {
             return;
         });
     });
+});
+
+router.get('/korisnik/verifikacija/:id', (req, res, next) => {
+    try {
+        var reqObj = req.params.id;
+
+        console.log('usao sam u verifikaciju!');
+        console.log(reqObj);
+        connection.getConnection(function (err, conn) {
+            if (err) {
+                console.error('SQL Connection error: ', err);
+                res.json({ "code": 100, "status": "Error in connection database" });
+                return next(err);
+            }
+            else {
+                conn.query("UPDATE users SET active='1' WHERE SHA1(email)='" + reqObj + "'",
+                    function (err, rows, fields) {
+                        conn.release();
+                        if (err) {
+                            console.error("SQL error:", err);
+                            res.json({ "code": 100, "status": "Error in connection database" });
+                            return next(err);
+                        } else {
+                            res.writeHead(302, { 'Location': '/login' });
+                            res.end();
+                        }
+                    }
+                );
+            }
+        });
+    }
+    catch (ex) {
+        console.error("Internal error: " + ex);
+        return next(ex);
+    }
+
 });
 
 module.exports = router;
