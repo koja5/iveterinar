@@ -37,7 +37,7 @@ export const routes: Routes = [
         children: [
           { path: 'home', component: HomeDashboardComponent, outlet: 'home' },
           { path: 'cards', component: CardsComponent, outlet: 'home'},
-          { path: 'calendar', component: CalendarComponent, outlet: 'home' }
+          { path: 'calendar', component: CalendarComponent, outlet: 'home' },
            { path: 'addPet', component: AddPetComponent, outlet: 'home' }
       ]},
       { path: 'admin', component: AdminComponent, outlet: 'dash',
