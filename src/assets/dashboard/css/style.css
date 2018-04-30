@@ -1118,7 +1118,9 @@ File: scss
       .topbar ul.dropdown-user li a {
         padding: 9px 15px;
         display: block;
-        color: #67757c; }
+        color: #67757c; 
+        cursor: pointer;
+      }
         .topbar ul.dropdown-user li a:hover {
           background: #e9edf2;
           color: #398bf7;

@@ -1,6 +1,15 @@
 <div>
   <div class="container-fluid">
-    <kendo-grid [data]="usersData" [height]="410">
+    <kendo-grid 
+      [data]="usersData" 
+      [height]="410"
+      [pageSize]="state.take"
+      [skip]="state.skip"
+      [filter]="state.filter"
+      [sortable]="true"
+      [pageable]="true"
+      (dataStateChange)="dataStateChange($event)"
+    >
       <kendo-grid-column field="id" title="ID" width="40"></kendo-grid-column>
       <kendo-grid-column field="email" title="Email" width="120"></kendo-grid-column>
       <kendo-grid-column field="username" title="Username" width="120"></kendo-grid-column>

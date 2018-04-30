@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowUsersService } from '../../../../service/show-users/show-users.service';
+import { process, State } from '@progress/kendo-data-query';
+import { GridComponent, GridDataResult, DataStateChangeEvent } from '@progress/kendo-angular-grid';
+
+const distinct = data => data
+  .map(x => x.Category)
+  .filter((x, idx, xs) => xs.findIndex(y => y.CategoryName === x.CategoryName) === idx);
 
 @Component({
   selector: 'app-show-users',
@@ -8,13 +14,27 @@ import { ShowUsersService } from '../../../../service/show-users/show-users.serv
 })
 export class ShowUsersComponent implements OnInit {
 
-  private usersData: any;
+  private usersData: any[];
+
+  public distinctCategories: any[];
+
+  public state: State = {
+    skip: 0,
+    take: 5,
+
+    // Initial filter descriptor
+    filter: {
+      logic: 'and',
+      filters: [{ field: 'ProductName', operator: 'contains', value: 'Chef' }]
+    }
+};
 
   constructor(private service: ShowUsersService) { }
 
   ngOnInit() {
     this.service.getUsers().subscribe(
       data => {
+        this.distinctCategories = distinct(data);
         this.usersData = data;
       });
   }

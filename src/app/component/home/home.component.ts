@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../service/home/home.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class HomeComponent implements OnInit {
   title = 'app';
   private data: any;
   private menuData: any;
-  constructor (private service: HomeService) {}
+  constructor (private service: HomeService, private router: Router) {}
 
   ngOnInit() {
     this.service.getDataAboutMe().subscribe(
@@ -26,6 +27,10 @@ export class HomeComponent implements OnInit {
         console.log(this.menuData);
       }
     );
+  }
 
+  signin() {
+    this.router.navigate(['login']);
+    console.log('usao sam!');
   }
 }
