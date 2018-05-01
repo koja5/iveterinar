@@ -38,7 +38,11 @@ export const routes: Routes = [
           { path: 'home', component: HomeDashboardComponent, outlet: 'home' },
           { path: 'cards', component: CardsComponent, outlet: 'home'},
           { path: 'calendar', component: CalendarComponent, outlet: 'home' },
+<<<<<<< HEAD
            { path: 'addPet', component: AddPetComponent, outlet: 'home' }
+=======
+          { path: 'addPet', component: AddPetComponent, outlet: 'home' }
+>>>>>>> 0fbade33a448e664c28516c36347a976606b8f94
       ]},
       { path: 'admin', component: AdminComponent, outlet: 'dash',
         children: [

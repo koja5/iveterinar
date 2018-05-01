@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SignupService } from '../../service/signup/signup.service';
 import { MailService } from '../../service/mail/mail.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,7 @@ export class SignupComponent implements OnInit {
     'confirmPassword': ''
   };
 
-  constructor(private service: SignupService, private mailService: MailService) { }
+  constructor(private service: SignupService, private mailService: MailService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -30,5 +31,9 @@ export class SignupComponent implements OnInit {
       console.log(this.data);
       form.reset();
     });
+  }
+
+  login() {
+    this.router.navigate(['login']);
   }
 }
